@@ -10,12 +10,14 @@ public class CustomButton extends JButton {
 
     private final boolean showBackground;
 
+    private final int width = 90, height = 60;
+
     public CustomButton(String text, int x, int y) {
         super(text);
         this.radius = 20; // 기본 반지름 값
         this.backgroundColor = Color.WHITE; // 기본 배경색
         this.showBackground = true;
-        setBounds(x, y, 90, 60); // 버튼의 가로와 세로의 길이는 90 * 60 으로 항상 같음
+        setBounds(x, y, width, height); // 버튼의 가로와 세로의 길이는 90 * 60 으로 항상 같음
         setFont(new Font("Dialog", Font.PLAIN, 20));
         setOpaque(false);
         setContentAreaFilled(false);
@@ -29,7 +31,21 @@ public class CustomButton extends JButton {
         this.radius = 20; // 기본 반지름 값
         this.backgroundColor = br;
         this.showBackground = true;
-        setBounds(x, y, 90, 60); // 버튼의 가로와 세로의 길이는 90 * 60 으로 항상 같음
+        setBounds(x, y, width, height); // 버튼의 가로와 세로의 길이는 90 * 60 으로 항상 같음
+        setFont(new Font("Dialog", Font.PLAIN, 20));
+        setOpaque(false);
+        setContentAreaFilled(false);
+        setBorderPainted(false);
+        setFocusPainted(false);
+        setBorder(new RoundedBorder(radius));
+    }
+
+    public CustomButton(String text, int x, int y, int width, int height, Color br) {
+        super(text);
+        this.radius = 20; // 기본 반지름 값
+        this.backgroundColor = br;
+        this.showBackground = true;
+        setBounds(x, y, width, height);
         setFont(new Font("Dialog", Font.PLAIN, 20));
         setOpaque(false);
         setContentAreaFilled(false);

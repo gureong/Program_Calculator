@@ -49,9 +49,9 @@ public class MyFrame extends JFrame {
         return tempDouble % 1 == 0;
     }
 
+    private final JButton[] buttonNum = new CustomButton[10];
 
     public MyFrame() {
-
         setTitle("Calculator");
         setSize(385 + 16, 490 + 39); // 프레임 내부 사이즈 385 * 490 -> 프레임 전체 사이즈 (385 + 16) * (490 + 39)
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); // 프레임 꺼졌을 때 프로그램 종료할건지
@@ -79,23 +79,23 @@ public class MyFrame extends JFrame {
         JButton buttonSqrt = new CustomButton("√x", 195, 65, CustomColor.LIGHT_GRAY_BUTTON);
         JButton buttonDivide = new CustomButton("÷", 290, 65, CustomColor.LIGHT_GRAY_BUTTON);
 
-        JButton button7 = new CustomButton("7", 5, 130);
-        JButton button8 = new CustomButton("8", 100, 130);
-        JButton button9 = new CustomButton("9", 195, 130);
+        buttonNum[7] = new CustomButton("7", 5, 130);
+        buttonNum[8] = new CustomButton("8", 100, 130);
+        buttonNum[9] = new CustomButton("9", 195, 130);
         JButton buttonMultiply = new CustomButton("×", 290, 130, CustomColor.LIGHT_GRAY_BUTTON);
 
-        JButton button4 = new CustomButton("4", 5, 195);
-        JButton button5 = new CustomButton("5", 100, 195);
-        JButton button6 = new CustomButton("6", 195, 195);
+        buttonNum[4] = new CustomButton("4", 5, 195);
+        buttonNum[5] = new CustomButton("5", 100, 195);
+        buttonNum[6] = new CustomButton("6", 195, 195);
         JButton buttonSubtract = new CustomButton("-", 290, 195, CustomColor.LIGHT_GRAY_BUTTON);
 
-        JButton button1 = new CustomButton("1", 5, 260);
-        JButton button2 = new CustomButton("2", 100, 260);
-        JButton button3 = new CustomButton("3", 195, 260);
+        buttonNum[1] = new CustomButton("1", 5, 260);
+        buttonNum[2] = new CustomButton("2", 100, 260);
+        buttonNum[3] = new CustomButton("3", 195, 260);
         JButton buttonAdd = new CustomButton("+", 290, 260, CustomColor.LIGHT_GRAY_BUTTON);
 
         JButton buttonPlusOrMinus = new CustomButton("+/-", 5, 325);
-        JButton button0 = new CustomButton("0", 100, 325);
+        buttonNum[0] = new CustomButton("0", 100, 325);
         JButton buttonDot = new CustomButton(".", 195, 325);
         JButton buttonEnter = new CustomButton("=", 290, 325, CustomColor.RED_ENTER);
 
@@ -196,51 +196,6 @@ public class MyFrame extends JFrame {
             panelContent.requestFocusInWindow();
         });
 
-        button7.addActionListener(e -> {
-            if (!getTextStr().equals(errorDivide0)) {
-                tempStr = getTextStr();
-                if (tempStr.equals("0")) {
-                    setText(7);
-                } else {
-                    setText(getTextStr() + "7");
-                }
-            } else {
-                setText(7);
-            }
-
-            panelContent.requestFocusInWindow();
-        });
-
-        button8.addActionListener(e -> {
-            if (!getTextStr().equals(errorDivide0)) {
-                tempStr = getTextStr();
-                if (tempStr.equals("0")) {
-                    setText(8);
-                } else {
-                    setText(getTextStr() + "8");
-                }
-            } else {
-                setText(8);
-            }
-
-            panelContent.requestFocusInWindow();
-        });
-
-        button9.addActionListener(e -> {
-            if (!getTextStr().equals(errorDivide0)) {
-                tempStr = getTextStr();
-                if (tempStr.equals("0")) {
-                    setText(9);
-                } else {
-                    setText(getTextStr() + "9");
-                }
-            } else {
-                setText(9);
-            }
-
-            panelContent.requestFocusInWindow();
-        });
-
         buttonMultiply.addActionListener(e -> {
             if (getTextStr().split(" ").length == 3) {
                 buttonEnter.doClick();
@@ -252,102 +207,12 @@ public class MyFrame extends JFrame {
             panelContent.requestFocusInWindow();
         });
 
-        button4.addActionListener(e -> {
-            if (!getTextStr().equals(errorDivide0)) {
-                tempStr = getTextStr();
-                if (tempStr.equals("0")) {
-                    setText(4);
-                } else {
-                    setText(getTextStr() + "4");
-                }
-            } else {
-                setText(4);
-            }
-
-            panelContent.requestFocusInWindow();
-        });
-
-        button5.addActionListener(e -> {
-            if (!getTextStr().equals(errorDivide0)) {
-                tempStr = getTextStr();
-                if (tempStr.equals("0")) {
-                    setText(5);
-                } else {
-                    setText(getTextStr() + "5");
-                }
-            } else {
-                setText(5);
-            }
-
-            panelContent.requestFocusInWindow();
-        });
-
-        button6.addActionListener(e -> {
-            if (!getTextStr().equals(errorDivide0)) {
-                tempStr = getTextStr();
-                if (tempStr.equals("0")) {
-                    setText(6);
-                } else {
-                    setText(getTextStr() + "6");
-                }
-            } else {
-                setText(6);
-            }
-
-            panelContent.requestFocusInWindow();
-        });
-
         buttonSubtract.addActionListener(e -> {
             if (getTextStr().split(" ").length == 3) {
                 buttonEnter.doClick();
             }
             if (notAddSubMulDivDot()) {
                 setText(getTextStr() + " - ");
-            }
-
-            panelContent.requestFocusInWindow();
-        });
-
-        button1.addActionListener(e -> {
-            if (!getTextStr().equals(errorDivide0)) {
-                tempStr = getTextStr();
-                if (tempStr.equals("0")) {
-                    setText(1);
-                } else {
-                    setText(getTextStr() + "1");
-                }
-            } else {
-                setText(1);
-            }
-
-            panelContent.requestFocusInWindow();
-        });
-
-        button2.addActionListener(e -> {
-            if (!getTextStr().equals(errorDivide0)) {
-                tempStr = getTextStr();
-                if (tempStr.equals("0")) {
-                    setText(2);
-                } else {
-                    setText(getTextStr() + "2");
-                }
-            } else {
-                setText(2);
-            }
-
-            panelContent.requestFocusInWindow();
-        });
-
-        button3.addActionListener(e -> {
-            if (!getTextStr().equals(errorDivide0)) {
-                tempStr = getTextStr();
-                if (tempStr.equals("0")) {
-                    setText(3);
-                } else {
-                    setText(getTextStr() + "3");
-                }
-            } else {
-                setText(3);
             }
 
             panelContent.requestFocusInWindow();
@@ -377,27 +242,35 @@ public class MyFrame extends JFrame {
             panelContent.requestFocusInWindow();
         });
 
-        button0.addActionListener(e -> {
-            tempStr = getTextStr();
-            if (tempStr.equals("0")) {
-                setText(0);
-            } else {
-                setText(getTextStr() + "0");
-            }
-            panelContent.requestFocusInWindow();
-        });
-
         buttonDot.addActionListener(e -> {
             if (notAddSubMulDivDot()) {
                 setText(getTextStr() + ".");
             }
         });
 
+        // 넘버패드 0~9 까지 한번에 처리
+        for (int i = 0; i < 10; i++) {
+            final int tempInt = i;
+            buttonNum[tempInt].addActionListener(e -> {
+                tempStr = getTextStr();
+                if (tempStr.equals("0")) {
+                    setText(tempInt);
+                } else {
+                    setText(getTextStr() + tempInt);
+                }
+                panelContent.requestFocusInWindow();
+            });
+            panelContent.add(buttonNum[tempInt]);
+        }
+
         buttonEnter.addActionListener(e -> {
             if (!getTextStr().equals(errorDivide0)) {
                 String[] part = getTextStr().trim().split(" ", 3);
                 double firstNumber = Double.parseDouble(part[0]);
-                String operator = part[1];
+                String operator = "";
+                if (part.length >= 2) {
+                    operator = part[1];
+                }
                 double result = 0;
                 if (part.length == 3) {
                     double secondNumber = Double.parseDouble(part[2]);
@@ -449,23 +322,10 @@ public class MyFrame extends JFrame {
         panelContent.add(buttonSqrt);
         panelContent.add(buttonDivide);
 
-        panelContent.add(button7);
-        panelContent.add(button8);
-        panelContent.add(button9);
         panelContent.add(buttonMultiply);
-
-        panelContent.add(button4);
-        panelContent.add(button5);
-        panelContent.add(button6);
         panelContent.add(buttonSubtract);
-
-        panelContent.add(button1);
-        panelContent.add(button2);
-        panelContent.add(button3);
         panelContent.add(buttonAdd);
-
         panelContent.add(buttonPlusOrMinus);
-        panelContent.add(button0);
         panelContent.add(buttonDot);
         panelContent.add(buttonEnter);
 
@@ -474,25 +334,16 @@ public class MyFrame extends JFrame {
         panelContent.addKeyListener(new KeyAdapter() {
             @Override
             public void keyPressed(KeyEvent e) {
+                int tempInt = e.getKeyCode();
                 if ((e.getModifiersEx() & KeyEvent.SHIFT_DOWN_MASK) != 0) {
-                    switch (e.getKeyCode()) {
+                    switch (tempInt) {
                         case KeyEvent.VK_1 -> buttonPlusOrMinus.doClick();
                         case KeyEvent.VK_5 -> buttonPercent.doClick();
                         case KeyEvent.VK_6 -> buttonPow.doClick();
                         case KeyEvent.VK_BACK_SPACE -> buttonC.doClick();
                     }
                 } else {
-                    switch (e.getKeyCode()) {
-                        case KeyEvent.VK_NUMPAD0 -> button0.doClick();
-                        case KeyEvent.VK_NUMPAD1 -> button1.doClick();
-                        case KeyEvent.VK_NUMPAD2 -> button2.doClick();
-                        case KeyEvent.VK_NUMPAD3 -> button3.doClick();
-                        case KeyEvent.VK_NUMPAD4 -> button4.doClick();
-                        case KeyEvent.VK_NUMPAD5 -> button5.doClick();
-                        case KeyEvent.VK_NUMPAD6 -> button6.doClick();
-                        case KeyEvent.VK_NUMPAD7 -> button7.doClick();
-                        case KeyEvent.VK_NUMPAD8 -> button8.doClick();
-                        case KeyEvent.VK_NUMPAD9 -> button9.doClick();
+                    switch (tempInt) {
                         case KeyEvent.VK_ADD -> buttonAdd.doClick();
                         case KeyEvent.VK_SUBTRACT -> buttonSubtract.doClick();
                         case KeyEvent.VK_MULTIPLY -> buttonMultiply.doClick();
@@ -501,6 +352,11 @@ public class MyFrame extends JFrame {
                         case KeyEvent.VK_ENTER -> buttonEnter.doClick();
                         case KeyEvent.VK_BACK_SPACE -> buttonBackSpace.doClick();
                         case KeyEvent.VK_DELETE -> buttonC.doClick();
+                        default -> {
+                            if (96 <= tempInt && tempInt <= 105) {
+                                buttonNum[tempInt - 96].doClick(); // 넘버패드 0 => 96, 넘버패드 9 => 105
+                            }
+                        }
                     }
                 }
             }
